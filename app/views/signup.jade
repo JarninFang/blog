@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Sign Up
+    script(src='/lib/angular/angular.js')
+    script(src='/lib/jquery/dist/jquery.js')
+    script(src='/lib/bootstrap/dist/js/bootstrap.js')
+    link(rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.css')
+  body.container
+    div.col-md-4.col-md-offset-4
+      h1 Sign Up
+      form(action="/signup" method="post")
+        p Name: 
+        input(type="text" name="name")
+        br
+        br
+        p Email: 
+        input(type="text" name="email")
+        br
+        br
+        p Username:
+        input(type="text" name="username")
+        br
+        br
+        p Password:
+        input(type="text" name="password")
+        br
+        br
+        input.btn.btn-info(type="submit" value="Sign Up")
