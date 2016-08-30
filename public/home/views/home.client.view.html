@@ -1,0 +1,15 @@
+<script href="/lib/jquery/dist/jquery.js"></script>
+<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<div ng-controller="HomeController">
+  <div data-ng-show="!authentication.user">
+    <a class="btn btn-info" href="/signup">Sign up</a>
+    <a class="btn btn-info" href="/signin">Sign in</a>
+  </div>
+  <div data-ng-show="authentication.user">
+    <h1>Hello <span data-ng-bind="authentication.user.name"></span></h1>
+    <a class="btn btn-info" href="/signout">Sign out</a>
+  </div>
+</div>
+   
+    

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+  <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+
+	<!-- Use the 'title' property to render a page title  -->
+	<title><%= pageTitle %></title>
+
+
+</head>
+<body class="container">
+	<!-- Render AngularJS views  -->
+	<div ng-view></div>
+
+	<!-- render the user object -->
+	<script type="text/javascript">
+		window.user = <%- user || 'null' %>;
+	</script>
+
+	<!-- Load local libraries -->
+	<script type="text/javascript" src="/lib/angular/angular.js"></script>
+	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+	
+	<!-- Load the example module -->
+	<script type="text/javascript" src="/home/home.client.module.js"></script>
+	<script type="text/javascript" src="/home/controllers/home.client.controller.js"></script>
+	<script type="text/javascript" src="/home/config/home.client.routes.js"></script>
+
+	<!-- Load the users module -->
+	<script type="text/javascript" src="/users/user.client.module.js"></script>
+	<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+	<!-- Bootstrap AngularJS application -->
+	<script type="text/javascript" src="/application.js"></script>
+</body>
+</html>

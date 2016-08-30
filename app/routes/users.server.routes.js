@@ -1,8 +1,10 @@
 var passport = require('passport');
 var users = require('../controllers/users.server.controller');
+
 module.exports = function(app) {
   app.route('/api/users')
-    .post(users.create);
+    .post(users.create)
+    .get(users.list);
   
   app.route('/signup')
     .get(users.renderSignup)
@@ -15,4 +17,7 @@ module.exports = function(app) {
       failureRedirect: '/signin',
       failureFlash: true
     }));  
+    
+  app.route('/signout')
+    .get(users.signout);
 };

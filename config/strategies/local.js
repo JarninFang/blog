@@ -1,4 +1,4 @@
-var passport = require('psasport'),
+var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy;
 var User = require('mongoose').model('User');
 
@@ -9,10 +9,10 @@ module.exports = function() {
       if(!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if(!user.validPassword(password)) {
+      if(!user.authenticate(password)) {
         return done(null, false, { message: "Incorrect password" }); 
       }
       return done(null, user);
     }); 
-  });
+  }));
 };

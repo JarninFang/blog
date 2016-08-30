@@ -1,5 +1,6 @@
 exports.render = function(req, res) {
   res.render('index', {
-    pageTitle: "Home"
+    pageTitle: "Home",
+    user: JSON.stringify(req.user)
   }); 
 };

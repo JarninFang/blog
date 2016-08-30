@@ -5,8 +5,11 @@ var compression = require('compression');
 var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var config = require('./config');
+var cookieparser = require('cookie-parser');
 
-module.exports = function() {
+module.exports = function(db) {
   var app = express(); 
 
 	// Use the 'NDOE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
@@ -22,8 +25,24 @@ module.exports = function() {
 	}));
 	app.use(bodyparser.json());
 
+  //Configure cookie parser
+  app.use(cookieparser());
+
   //Configure compression
   app.use(compression());
+
+  //Configure MongoStore
+  var mongoStore = new MongoStore({
+    mongooseConnection: db.connection
+  });
+
+  //Configure the session  middleware
+  app.use(session({
+    saveUnintialized: true,
+    resave: true,
+    secret: config.sessionSecret,
+    store: mongoStore
+  }));
 
   //Configure passport
   app.use(passport.initialize());
@@ -34,7 +53,7 @@ module.exports = function() {
 
 	// Set the application view engine and 'views' folder
 	app.set('views', './app/views');
-	app.set('view engine', 'jade');
+	app.set('view engine', 'ejs');
 
   //Set up static file serving
   app.use(express.static('./public')); 
