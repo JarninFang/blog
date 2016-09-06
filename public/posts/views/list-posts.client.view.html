@@ -1,0 +1,8 @@
+<div ng-controller="PostsController" ng-init="find()">
+  <h1>Posts</h1>
+  <li ng-repeat="post in posts">
+    <a ng-href="#/posts/{{post._id}}" ng-bind="post.title"></a>
+    <br>
+    <p ng-bind="post.content"></p>
+  </li>
+</div>

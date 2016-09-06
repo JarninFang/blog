@@ -61,6 +61,7 @@ module.exports = function(db) {
   //Load routese
   require('../app/routes/index.server.routes')(app);
   require('../app/routes/users.server.routes')(app);
+  require('../app/routes/posts.server.routes')(app);
 
   return app;
 };
